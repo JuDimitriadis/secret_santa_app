@@ -1,0 +1,15 @@
+{
+  "name": "secret_santa_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch server --ignore server/uploads server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juliana Pazin Dimitriadis",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
