@@ -74,6 +74,21 @@ app.post("/api/register", (req, res) => {
 });
 
 
+//API SERVING login.js
+app.post("/api/login", async (req, res) => {
+    const { email, password } = req.body;
+    const loginCheck = await database.authLogin(email, password);
+
+        if (loginCheck === null) {
+            return res.json({ success: false });
+        } else {
+            const loginId = { id: loginCheck.id };
+            req.session = loginId;
+            return res.json({ success: true });
+        }
+        
+    });
+
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });

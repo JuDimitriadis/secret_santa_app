@@ -22,6 +22,12 @@ async function hashPassword(password) {
     return await bcrypt.hash(password, salt);
 }
 
+//called by function authLogin
+async function getUserByEmail(email) {
+    const user = await  db.query(`SELECT * FROM users WHERE email = $1`, [email]);
+    return user.rows[0];
+}
+
 async function changePassword(newpassword, id) {
     const hashPass = await hashPassword(newpassword);
     const result = db.query(
@@ -32,27 +38,22 @@ async function changePassword(newpassword, id) {
     return result.rows[0];
 }
 
-// ** TO DO - CONVERT TO ASYNC FUNCTION **
-function authLogin(email, password) {
+//CALLED BY /api/login
+async function authLogin(email, password) {
     let userLogin;
-    return getUserByemail(email)
-        .then((user) => {
-            userLogin = user;
-            if (!user) {
-                return null;
-            } else {
-                return bcrypt.compare(password, user.hash_password);
-            }
-        })
-        .then((result) => {
-            if (result === false || result === null) {
-                return null;
-            } else {
-                return userLogin;
-            }
-        });
+    const user = await getUserByEmail(email);
+    const auth = await bcrypt.compare(password, user.hash_password);
+
+    if (!user || auth === false || auth === null) {
+        userLogin = null;
+        return userLogin 
+    } else {
+        userLogin = user;
+        return userLogin
+    }
 }
 
+// CALLED BY /api/register
 async function newUser(name, email, password) {
     console.log("param db.js", name, email, password);
     const newName = name.toUpperCase();
