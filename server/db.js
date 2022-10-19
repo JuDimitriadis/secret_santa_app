@@ -54,11 +54,13 @@ function authLogin(email, password) {
 }
 
 async function newUser(name, email, password) {
+    console.log("param db.js", name, email, password);
     const newName = name.toUpperCase();
+    console.log("newName", newName);
     const hashPass = await hashPassword(password);
-    const result = db.query(
+    const result = await db.query(
         `INSERT INTO users (name, email, hash_password)
-        VALUES ($1,$2,$3, $4)
+        VALUES ($1,$2,$3)
         RETURNING * `,
         [newName, email, hashPass]
     );

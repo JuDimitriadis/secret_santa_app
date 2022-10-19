@@ -52,6 +52,27 @@ app.get("/api/user", (req, res) => {
     }
 });
 
+//API serving registration.js
+app.post("/api/register", (req, res) => {
+    console.log("body req", req.body)
+    const { name, email, password } = req.body;
+    database
+        .newUser(name, email, password)
+        .then((new_user) => {
+            const newId = { id: new_user.id };
+            req.session = newId;
+            return res.json({ success: true });
+        })
+        .catch((error) => {
+            console.log("new user error", error);
+            if (error.constraint === "users_email_key") {
+                return res.json({ error: "email" });
+            } else {
+                return res.json({ error: "others" });
+            }
+        });
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
