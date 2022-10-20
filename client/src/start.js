@@ -1,7 +1,7 @@
 import "./style.css"
 import { useState } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-import {CssBaseline, Stack, Divider, Button, Modal, Fade, Box, Typography, Backdrop } from '@mui/material';
+import {CssBaseline, Stack, Divider, Tooltip, IconButton, Modal, Fade, Box, Typography, Backdrop, Button } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import Registration from "./registration";
@@ -37,7 +37,11 @@ export default function Start() {
         spacing={2}
       >
         <div>
-      <Button onClick={()=>setOpenLogin(true)}><LoginIcon sx={{ color: "#c22c2d" }} /></Button>
+          <Tooltip title="Login">
+            <IconButton onClick={()=>setOpenLogin(true)}>
+              <LoginIcon sx={{ color: "#c22c2d" }} />
+            </IconButton>
+          </Tooltip>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -57,7 +61,11 @@ export default function Start() {
       </Modal>
     </div>
     <div>
-      <Button onClick={()=>setOpenRegister(true)}><AppRegistrationIcon sx={{ color: "#c22c2d" }} /></Button>
+    <Tooltip title="Cadastre-se">
+            <IconButton onClick={()=>setOpenRegister(true)}>
+            <AppRegistrationIcon sx={{ color: "#c22c2d" }} />
+            </IconButton>
+          </Tooltip>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

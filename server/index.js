@@ -44,6 +44,7 @@ if (process.env.NODE_ENV == "production") {
     });
 }
 
+//API serving index.js
 app.get("/api/user", (req, res) => {
     if (!req.session.id) {
         return res.json({ success: false });
@@ -88,6 +89,12 @@ app.post("/api/login", async (req, res) => {
         }
         
     });
+
+//API SERVING app.js
+app.delete("/api/logout", (req, res) => {
+    req.session = null;
+    res.json({ success: true });
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
