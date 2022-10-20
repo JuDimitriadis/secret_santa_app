@@ -20,7 +20,7 @@ export default class Registration extends Component {
         );
     }
 
-    handleSubmit(evt) {
+    async handleSubmit(evt) {
         evt.preventDefault();
         this.setState(
             {
@@ -33,34 +33,25 @@ export default class Registration extends Component {
                 password: password,
             };
             const bodyJson = JSON.stringify(body);
-            fetch("/api/login", {
+            const fetchReq = await fetch("/api/login", {
                 method: "POST",
                 body: bodyJson,
                 headers: {
                     "Content-Type": "application/json",
                 },
-            })
-                .then((res) => res.json())
-                .then((result) => {
-                    console.log(result);
-                    if (result.success === false) {
-                        this.setState({
-                            error: "Ops, something went wrong! E-mail and/or password incorrect",
-                            alert:"error"
-                        });
-                    } else {
+            });
+            const response = await fetchReq.json()
+
+                if (response.success === false) {
+                    this.setState({
+                        error: "Ops, something went wrong! E-mail and/or password incorrect",
+                        alert:"error"
+                    });
+                } else {
                         // eslint-disable-next-line no-restricted-globals
                         location.reload();
                         return;
                     }
-                })
-                .catch((err) => {
-                    console.log(err);
-                    this.setState({
-                        error: "Ops, something went wrong! Please try again",
-                        alert:"error"
-                    });
-                });
         } else {
             console.log("missing field");
 
@@ -72,6 +63,14 @@ export default class Registration extends Component {
                 // () => console.log(this.state)
             );
         }
+         // eslint-disable-next-line no-undef
+         handleSubmit().catch(error => {
+            this.setState(
+                {
+                    error:  error.message,
+                    alert: "error"
+                })
+            })
     }
 
     render() {
@@ -86,23 +85,3 @@ export default class Registration extends Component {
         );
     }
 }
-
-{/* <div className="welcomePageForm">
-<h2 className="welcomePageFormTittle">Log in</h2>
-<form onSubmit={this.handleSubmit}>
-    <input
-        onChange={this.handleChange}
-        type="email"
-        name="email"
-        placeholder="Email Address"
-    />
-    <input
-        onChange={this.handleChange}
-        type="password"
-        name="password"
-        placeholder="Password"
-    />
-    <p className="error">{this.state.error}</p>
-    <button className="welcomePageFormButton">Login</button>
-</form>
-</div> */}

@@ -42,15 +42,21 @@ async function changePassword(newpassword, id) {
 async function authLogin(email, password) {
     let userLogin;
     const user = await getUserByEmail(email);
-    const auth = await bcrypt.compare(password, user.hash_password);
-
-    if (!user || auth === false || auth === null) {
+    if (!user) {
         userLogin = null;
         return userLogin 
     } else {
-        userLogin = user;
-        return userLogin
+        const auth = await bcrypt.compare(password, user.hash_password);
+
+        if (auth === false || auth === null) {
+            userLogin = null;
+            return userLogin 
+        } else {
+            userLogin = user;
+            return userLogin
+        }
     }
+    
 }
 
 // CALLED BY /api/register

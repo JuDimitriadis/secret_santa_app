@@ -19,7 +19,7 @@ export default class Registration extends Component {
         );
     }
 
-    handleSubmit(evt) {
+    async handleSubmit(evt) {
         evt.preventDefault();
 
         this.setState(
@@ -36,54 +36,40 @@ export default class Registration extends Component {
                     password: password,
                 };
                 const bodyJson = JSON.stringify(body);
-
-                fetch("/api/register", {
+                const fetchReq = await fetch("/api/register", {
                     method: "POST",
                     body: bodyJson,
                     headers: {
                         "Content-Type": "application/json",
                     },
-                })
-                    .then((res) => res.json())
-                    .then((result) => {
-                        console.log("result fetch REGISTRATION", result);
-                        if (result.success === true) {
-                            // eslint-disable-next-line no-restricted-globals
-                            location.reload();
-                          console.log("REGISTERED")
-                            return;
-                        }
-                        if (result.error === "email") {
-                            this.setState({
-                                error: "Email already registered.Please log in",
-                                alert: "warning"
-                            });
-                            return;
-                        }
+                });
 
-                        if (result.error === "others") {
-                            this.setState({
-                                error: "Ops, something went wrong! Please try again",
-                                alert: "error"
-                            });
-                            return;
-                        }
-
-                        return;
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                        this.setState(
-                            {
-                                error: "Ops, something went wrong! Please try again",
-                                alert:"error"
-                            }
-                            // () => console.log(this.state)
-                        );
+                const response = await fetchReq.json();
+                if (response.success === true) {
+                     // eslint-disable-next-line no-restricted-globals
+                     location.reload();
+                     return 
+                } else if (response.error === "email") {
+                    this.setState({
+                        error: "Email already registered.Please log in",
+                        alert: "warning"
                     });
+                    return;
+                } else if (response.error === "others") {
+                    this.setState({
+                        error: "Ops, something went wrong! Please try again",
+                        alert: "error"
+                    });
+                    return;
+                } else {
+                    this.setState({
+                        error: "Ops, something went wrong! Please try again",
+                        alert: "error"
+                    });
+                    return;
+                }
             } else {
                 console.log("different password");
-
                 this.setState(
                     {
                         error: "Ops,password doesn't match",
@@ -102,7 +88,17 @@ export default class Registration extends Component {
                 // () => console.log(this.state)
             );
         }
-    }
+
+        // eslint-disable-next-line no-undef
+        handleSubmit().catch(error => {
+            this.setState(
+                {
+                    error:  error.message,
+                    alert: "error"
+                })
+           
+    })
+}
 
     render() {
         return (  <Stack spacing={2} direction="column">
