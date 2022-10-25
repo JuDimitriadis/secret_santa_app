@@ -90,11 +90,47 @@ app.post("/api/login", async (req, res) => {
         
     });
 
+// API SERVING => app.js
+app.get("/api/get-user-data", async (req, res) => {
+    const getUser = await database.getUserById(req.session.id)
+    console.log("USER DATA SERVER", getUser)
+    return res.json(getUser);
+    });
+
+
 //API SERVING app.js
 app.delete("/api/logout", (req, res) => {
     req.session = null;
-    res.json({ success: true });
+   return res.json({ success: true });
 });
+
+//API serving app.js
+app.post("/api/profile-update", async (req, res) => {
+    console.log("body", req.body);
+
+    if (req.body.wishOne && !req.body.wishOne.startsWith('https')) {
+        return res.json({ error: "invalid link" });
+    } else if (req.body.wishTwo && !req.body.wishTwo.startsWith('https')) {
+        return res.json({ error: "invalid link" });
+    } else if (req.body.wishThree && !req.body.wishThree.startsWith('https')) {
+        return res.json({ error: "invalid link" });
+    } else {
+        const updateUsers = await database.updateUsers(req.body, req.session.id)
+        if (updateUsers.id) {
+            return res.json({ success: true });
+        } else {
+            return res.json({ success: false });
+        }
+    }
+
+
+  
+    // !homepage.startsWith('http')
+
+    //CODE HTTPS VERIFICATION HERE 
+})
+
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

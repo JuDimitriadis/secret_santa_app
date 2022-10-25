@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './style.css';
 import App from './App';
 import Start from './start';
 import reportWebVitals from './reportWebVitals';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const amatic = "'Amatic SC', cursive";
 
 const theme = createTheme({
   palette: {
@@ -30,9 +32,15 @@ const theme = createTheme({
       //     customWhite: '#FFFFF5',
       // },
   },
+  typography: {
+    fontFamily: [
+      'Amatic SC',
+      'cursive',
+    ].join(','),
+  }
   // typography: {
   //     h2: {
-  //         fontFamily: "'Poppins', sans-serif",
+  //         fontFamily: `amatic`,
   //         fontWeight: 700,
   //     },
   //     h3: {

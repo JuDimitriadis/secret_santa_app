@@ -74,4 +74,24 @@ async function newUser(name, email, password) {
     return result.rows[0];
 }
 
-module.exports = {changePassword, authLogin, newUser,}
+// FUNCTION CALLED BY "/api/get-user/data"
+async function getUserById(id) {
+    const query = await db.query(
+            `SELECT id, name, profile_picture_url, about_me, wish_one, wish_two, wish_three FROM users WHERE users.id = $1`,
+            [id]
+        )
+        console.log("RESULT QUERY DB",query.rows[0])
+    return query.rows[0]
+  
+}
+
+async function updateUsers({aboutMe, wishOne, wishTwo, wishThree}, id) {
+    const query = await db.query(
+        `UPDATE users SET about_me = $1, wish_one = $2, wish_two = $3, wish_three = $4 WHERE id = $5
+    RETURNING * `,
+        [aboutMe, wishOne, wishTwo, wishThree, id]
+    )
+    return query.rows[0]
+}
+
+module.exports = {changePassword, authLogin, newUser, getUserById, updateUsers}
