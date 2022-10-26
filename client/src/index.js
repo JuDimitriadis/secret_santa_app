@@ -4,11 +4,10 @@ import './style.css';
 import App from './App';
 import Start from './start';
 import reportWebVitals from './reportWebVitals';
-import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const amatic = "'Amatic SC', cursive";
 
 const theme = createTheme({
   palette: {
@@ -54,6 +53,7 @@ fetch("/api/user")
     .then((res) => res.json())
     .then((result) => {
         if (result.success === false) {
+          console.log("result.success === false");
           root.render(
             <React.StrictMode>
               <ThemeProvider theme={theme}>
@@ -62,6 +62,7 @@ fetch("/api/user")
             </React.StrictMode>
           );
         } else {
+          console.log("result.success === true");
           root.render(
             <React.StrictMode>
               <ThemeProvider theme={theme}>

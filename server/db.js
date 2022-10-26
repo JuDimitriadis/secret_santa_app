@@ -43,13 +43,13 @@ async function authLogin(email, password) {
     let userLogin;
     const user = await getUserByEmail(email);
     if (!user) {
-        userLogin = null;
+        userLogin = false;
         return userLogin 
     } else {
         const auth = await bcrypt.compare(password, user.hash_password);
 
         if (auth === false || auth === null) {
-            userLogin = null;
+            userLogin = false;
             return userLogin 
         } else {
             userLogin = user;
@@ -98,7 +98,6 @@ async function getGroupData(id) {
     JOIN secret_santa_group
     ON group_participants_draw.group_id = secret_santa_group.id
     WHERE group_participants_draw.participant_id = $1`, [id]);
-    console.log("return query.rows[0]", query.rows[0]);
     return query.rows[0]
 
 }

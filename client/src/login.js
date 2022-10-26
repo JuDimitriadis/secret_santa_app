@@ -6,26 +6,27 @@ export default class Registration extends Component {
     constructor() {
         super();
         this.state = {};
+    
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(e) {
-        this.setState(
-            {
-                [e.target.name]: e.target.value,
-            },
+        this.setState({data:{
+            [e.target.name]: e.target.value,
+        }}
+            ,
             () => console.log(this.state)
         );
     }
 
     async handleSubmit(evt) {
         evt.preventDefault();
-        this.setState(
-            {
-                alert: false
-            })
+        this.setState({
+            alert: false
+        }
+          )
         const { email, password } = this.state;
         if (email && password) {
             const body = {
@@ -55,22 +56,15 @@ export default class Registration extends Component {
         } else {
             console.log("missing field");
 
-            this.setState(
-                {
-                    error: "Please fill out all required fields before submitting",
-                    alert:"warning"
-                }
+            this.setState({
+                error: "Please fill out all required fields before submitting",
+                alert:"warning"
+            }
+              
                 // () => console.log(this.state)
             );
         }
-         // eslint-disable-next-line no-undef
-         handleSubmit().catch(error => {
-            this.setState(
-                {
-                    error:  error.message,
-                    alert: "error"
-                })
-            })
+
     }
 
     render() {

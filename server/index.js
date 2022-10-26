@@ -19,6 +19,7 @@ if (process.env.DATABASE_URL) {
     COOKIE_SECRET = COOKIE_SECRET_DEV
 }
 
+console.log("COOKIE_SECRET", COOKIE_SECRET);
 // const cookieParser = require("cookie-parser");
 // const server = Server(app);
 // app.use(cookieParser());
@@ -54,9 +55,12 @@ if (process.env.NODE_ENV == "production") {
 
 //API serving index.js
 app.get("/api/user", (req, res) => {
+    console.log("been here");
     if (!req.session.id) {
+        console.log("NO USER COOKIE");
         return res.json({ success: false });
     } else {
+        console.log("YES USER COOKIE");
         return res.json({ success: true });
     }
 });
@@ -72,7 +76,7 @@ app.post("/api/register", (req, res) => {
             return res.json({ success: true });
         })
         .catch((error) => {
-            console.log("new user error", error);
+            // console.log("new user error", error);
             if (error.constraint === "users_email_key") {
                 return res.json({ error: "email" });
             } else {

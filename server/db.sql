@@ -41,6 +41,10 @@ CREATE TABLE group_participants_draw (
 INSERT INTO secret_santa_group (group_name, manager_id, online, group_photo_url, event_date, draw_date) VALUES ('group_1', 1, true, '/secret_img.jpg', '10/12/2022 20:30', '01/12/2022');
 INSERT INTO group_participants_draw (group_id,participant_id) VALUES (1,1);
 
+INSERT INTO secret_santa_group (group_name, manager_id, online, group_photo_url, event_date, draw_date) VALUES ('Confraternização do Grupo Mutterschaft', 1, true, '/secret_img.jpg', '17/12/2022 20:00', '01/11/2022');
+
+
+
 SELECT group_participants_draw.participant_id, group_participants_draw.secret_friend_id, group_participants_draw.group_id, secret_santa_group.id, secret_santa_group.group_name, secret_santa_group.draw_date, secret_santa_group.event_date, secret_santa_group.online, secret_santa_group.meeting_link, secret_santa_group.location 
 FROM group_participants_draw
 JOIN secret_santa_group

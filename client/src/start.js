@@ -1,12 +1,10 @@
 import "./style.css"
 import { useState } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
 import {CssBaseline, Stack, Divider, Tooltip, IconButton, Modal, Fade, Box, Typography, Backdrop, Link } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import Registration from "./registration";
 import Login from "./login";
-// import ResetPassword from "./resetPassword";
 
 export default function Start() {
     const [openLogin, setOpenLogin] = useState(false);
@@ -27,7 +25,6 @@ export default function Start() {
 
     return (
         <>
-            <BrowserRouter>
             <CssBaseline />
             <img src="/secret_santa.jpg" alt='Santa Claus' id="welcomeImg"/>
             <div>
@@ -86,7 +83,6 @@ export default function Start() {
     </div>
       </Stack>
     </div>
-            </BrowserRouter>
     <footer><Typography variant="body2"><Link href="https://www.freepik.com/free-vector/hand-drawn-secret-santa-illustration_20112076.htm#query=secret%20santa&position=41&from_view=search&track=sph">Image by Freepik</Link></Typography></footer>
         </>
     );

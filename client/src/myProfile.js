@@ -25,7 +25,7 @@ export default function MyProfile({userData, profileUpdate}) {
 
     const handleSave = async()=> {
         setAlert(false);
-        setError(null);
+        setError(false);
         
         console.log("about me", aboutMe)
 
@@ -36,10 +36,10 @@ export default function MyProfile({userData, profileUpdate}) {
             return
         } else {
                 const body = {
-                    aboutMe: aboutMe || null,
-                    wishOne: wishOne || null,
-                    wishTwo: wishTwo || null,
-                    wishThree: wishThree || null
+                    aboutMe: aboutMe,
+                    wishOne: wishOne,
+                    wishTwo: wishTwo,
+                    wishThree: wishThree 
                 };
                 console.log("body my profile", body);
                 const callUpdate = await profileUpdate(body);
@@ -90,7 +90,7 @@ export default function MyProfile({userData, profileUpdate}) {
             <TextField fullWidth label="Wish #3" id="wishThree"type="url" margin="dense" defaultValue={userData.wish_three}   size="small" onChange={(e)=> setWishThree(e.target.value)}/>
         </> : <>      
         {userData.about_me? 
-            <Typography variant="body1" color="secondary.main">{userData.about_me}</Typography> :       
+            <Typography variant="body1" color="text.secondary">{userData.about_me}</Typography> :       
             <Typography variant="body1" color="text.secondary">Tell us a little about yourself</Typography> 
         } {userData.wish_one || userData.wish_two || userData.wish_three ? <>
             {/* ADDITIONAL FEATURE - scrape websites and display previews with Cheerio */}
