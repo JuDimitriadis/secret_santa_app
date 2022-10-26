@@ -138,6 +138,9 @@ app.get("/api/get-secret-group", async (req, res) => {
     return res.json(getGroupData);
 })
 
+app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "..", "client", "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
