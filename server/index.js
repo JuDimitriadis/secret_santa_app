@@ -6,10 +6,18 @@ const cookieSession = require("cookie-session");
 // const ses = require("./ses.js");
 // const multer = require("./midleware.js");
 // const s3 = require("./s3.js");
-const {COOKIE_SECRET} = require("../secrets.json")
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+let COOKIE_SECRET;
+
+if (process.env.DATABASE_URL) {
+    COOKIE_SECRET = process.env.COOKIE_SECRET;
+} else {
+    const { COOKIE_SECRET_DEV,
+    } = require("../secrets.json");
+    COOKIE_SECRET = COOKIE_SECRET_DEV
+}
 
 // const cookieParser = require("cookie-parser");
 // const server = Server(app);

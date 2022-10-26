@@ -1,7 +1,7 @@
 import "./style.css"
 import { useState } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import {CssBaseline, Stack, Divider, Tooltip, IconButton, Modal, Fade, Box, Typography, Backdrop, Button } from '@mui/material';
+import { BrowserRouter, Route } from "react-router-dom";
+import {CssBaseline, Stack, Divider, Tooltip, IconButton, Modal, Fade, Box, Typography, Backdrop, Link } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import Registration from "./registration";
@@ -87,6 +87,7 @@ export default function Start() {
       </Stack>
     </div>
             </BrowserRouter>
+    <footer><Typography variant="body2"><Link href="https://www.freepik.com/free-vector/hand-drawn-secret-santa-illustration_20112076.htm#query=secret%20santa&position=41&from_view=search&track=sph">Image by Freepik</Link></Typography></footer>
         </>
     );
 }

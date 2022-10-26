@@ -3,7 +3,7 @@ import MyProfile from "./myProfile";
 import SecretGroup from "./secretGroups";
 import "./style.css";
 
-import {CssBaseline, Tooltip, IconButton, Box, Grid, Typography, Toolbar, AppBar} from '@mui/material';
+import {CssBaseline, Tooltip, IconButton, Box, Grid, Typography, Toolbar, AppBar, Link} from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 function App() {
@@ -78,6 +78,8 @@ function App() {
           </Tooltip>
       </Toolbar>
       </AppBar>
+      
+    <footer><Typography variant="body2"><Link href="https://www.freepik.com/free-photo/two-women-with-sparkle-balloons-talking-party_12306682.htm#page=10&query=girls%20christmas%20party&position=15&from_view=search&track=sph">Image by lookstudio on Freepik</Link></Typography></footer>
     </>
   );
 }

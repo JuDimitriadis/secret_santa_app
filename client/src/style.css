@@ -16,5 +16,10 @@ html {
   object-fit: scale-down;
 }
 
+footer {
+  bottom: 0;
+  right: 0;
+  color: #c22c2d
+}
 
 
