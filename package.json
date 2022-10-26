@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch server --ignore server/uploads server/index.js",
+    "start": "node server/index.js",
+    "start:dev": "nodemon --watch server --ignore server/uploads server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Juliana Pazin Dimitriadis",
