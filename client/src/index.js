@@ -4,7 +4,7 @@ import './style.css';
 import App from './App';
 import Start from './start';
 import reportWebVitals from './reportWebVitals';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,36 +22,31 @@ const theme = createTheme({
       background: {
         paper: "#ffeed2",
         default: "#ffeed2"
-      }
-      // text: {
-      //     customOne: '#F40058',
-      //     customTwo: '#161B40',
-      //     customThree: '#EFA500',
-      //     customFour: '#41B853',
-      //     customFive: '#43BEEE',
-      //     customWhite: '#FFFFF5',
-      // },
+      },
+      text: {
+          primary: '#c22c2d',
+          secondary:'#54944a'
+      },
   },
   typography: {
     fontFamily: [
       'Amatic SC',
       'cursive',
     ].join(','),
+
+    h2: {
+      fontWeight: 900,
+    },
+
+     h4: {
+      fontWeight: 900,
+    },
+
+    body1: {
+      fontWeight: 700,
+    },
   }
-  // typography: {
-  //     h2: {
-  //         fontFamily: `amatic`,
-  //         fontWeight: 700,
-  //     },
-  //     h3: {
-  //         fontFamily: "'Poppins', sans-serif",
-  //     },
-  //     button: {
-  //         textTransform: 'none',
-  //         fontFamily: "'Poppins', sans-serif",
-  //         fontWeight: '300',
-  //     },
-  // },
+
 });
 
 

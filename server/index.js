@@ -55,7 +55,6 @@ app.get("/api/user", (req, res) => {
 
 //API serving registration.js
 app.post("/api/register", (req, res) => {
-    console.log("body req", req.body)
     const { name, email, password } = req.body;
     database
         .newUser(name, email, password)
@@ -93,7 +92,6 @@ app.post("/api/login", async (req, res) => {
 // API SERVING => app.js
 app.get("/api/get-user-data", async (req, res) => {
     const getUser = await database.getUserById(req.session.id)
-    console.log("USER DATA SERVER", getUser)
     return res.json(getUser);
     });
 
@@ -106,7 +104,6 @@ app.delete("/api/logout", (req, res) => {
 
 //API serving app.js
 app.post("/api/profile-update", async (req, res) => {
-    console.log("body", req.body);
 
     if (req.body.wishOne && !req.body.wishOne.startsWith('https')) {
         return res.json({ error: "invalid link" });
@@ -122,14 +119,12 @@ app.post("/api/profile-update", async (req, res) => {
             return res.json({ success: false });
         }
     }
-
-
-  
-    // !homepage.startsWith('http')
-
-    //CODE HTTPS VERIFICATION HERE 
 })
 
+app.get("/api/get-secret-group", async (req, res) => {
+    const getGroupData = await database.getGroupData(req.session.id);
+    return res.json(getGroupData);
+})
 
 
 app.listen(PORT, () => {

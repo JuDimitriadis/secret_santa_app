@@ -1,28 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
-
-import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Tooltip,Button, TextField, Alert, Link  } from "@mui/material";
-import { palette } from "@mui/system";
+import { Card, CardHeader, CardContent, CardActions, Avatar, Tooltip, Button, IconButton, Typography,  TextField, Alert, Link  } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
-
-
-
 
 export default function MyProfile({userData, profileUpdate}) {
     const [edit, setEdit] = useState(false);
@@ -89,17 +69,17 @@ export default function MyProfile({userData, profileUpdate}) {
     },[userData.about_me, userData.wish_one, userData.wish_two, userData.wish_three])
 
   return ( 
-  <Card sx={{ m: 2 }}>
+  <Card sx={{ height: {md: "70vh", m: 1}}}>
       <CardHeader
         avatar={<Avatar alt={userData.name} src={userData.profile_picture_url} sx={{ bgcolor: 'primary.main', height:75, width: 75}}></Avatar>}
         title={<Typography variant="h4" sx={{color: 'primary.main'}} >{userData.name}</Typography>}
         action={edit? <Tooltip title="Cancel">
         <IconButton onClick={handleCancel}>
-          <CloseIcon sx={{ color: "#c22c2d" }} />
+          <CloseIcon sx={{ color: "primary.main" }} />
         </IconButton>
       </Tooltip> : <Tooltip title="Edit">
         <IconButton onClick={()=>setEdit(true)}>
-          <EditIcon sx={{ color: "#c22c2d" }} />
+          <EditIcon sx={{ color: "primary.main" }} />
         </IconButton>
       </Tooltip>}
       />
@@ -110,14 +90,14 @@ export default function MyProfile({userData, profileUpdate}) {
             <TextField fullWidth label="Wish #3" id="wishThree"type="url" margin="dense" defaultValue={userData.wish_three}   size="small" onChange={(e)=> setWishThree(e.target.value)}/>
         </> : <>      
         {userData.about_me? 
-            <Typography variant="body2" color="text.secondary">{userData.about_me}</Typography> :       
-            <Typography variant="body2" color="text.secondary">Tell us a little about yourself</Typography> 
+            <Typography variant="body1" color="secondary.main">{userData.about_me}</Typography> :       
+            <Typography variant="body1" color="text.secondary">Tell us a little about yourself</Typography> 
         } {userData.wish_one || userData.wish_two || userData.wish_three ? <>
             {/* ADDITIONAL FEATURE - scrape websites and display previews with Cheerio */}
-            <Link variant="body2" color="text.primary" sx={{m:1}}>{userData.wish_one} </Link> 
-            <Link variant="body2" color="text.primary" sx={{m:1}}>{userData.wish_two} </Link>
-            <Link variant="body2" color="text.primary" sx={{m:1}}>{userData.wish_three} </Link></>:       
-            <Typography variant="body2" color="text.primary" sx={{m:1}}>Here you can add up to 3 links from gifts you would like to receive.</Typography> 
+            <Link variant="body1" color="text.primary" sx={{m:1}}>{userData.wish_one} </Link> 
+            <Link variant="body1" color="text.primary" sx={{m:1}}>{userData.wish_two} </Link>
+            <Link variant="body1" color="text.primary" sx={{m:1}}>{userData.wish_three} </Link></>:       
+            <Typography variant="body1" color="text.primary" sx={{m:1}}>Here you can add up to 3 links from gifts you would like to receive.</Typography> 
         } </>}
         
    

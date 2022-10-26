@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MyProfile from "./myProfile";
+import SecretGroup from "./secretGroups";
 import "./style.css";
 
 import {CssBaseline, Tooltip, IconButton, Box, Grid, Typography, Toolbar, AppBar} from '@mui/material';
@@ -56,10 +57,13 @@ function App() {
   return (
     <> <CssBaseline />
       <Typography variant="h2" align='left' sx={{ color: 'primary.main', letterSpacing: 4, m: 2, fontWeight:700}}>BR Secret Santa</Typography>
-    <Box maxWidth="lg" sx={{ flexGrow: 1, mx:'auto', textAlign: 'center', alignContent: "center", justifyContent:"center" }} >
-      <Grid container spacing={3} alignItems="stretch">
-        <Grid item xs={10} md={4} >
+    <Box maxWidth="lg" sx={{ flexGrow: 1, mx:'auto', textAlign: 'center'}} >
+      <Grid container spacing={5} alignItems="stretch" justifyContent='center'>
+        <Grid item xs={10} md={4}>
           <MyProfile userData={userData} profileUpdate={profileUpdate}></MyProfile>
+        </Grid>
+        <Grid item xs={10} md={7} sx={{ minHeight: {md: "50vh", lg:'35vh', xl: '30vh'}}}>
+          <SecretGroup userData={userData} profileUpdate={profileUpdate}></SecretGroup>
         </Grid>
       </Grid>
     </Box>
