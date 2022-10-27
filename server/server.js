@@ -16,7 +16,7 @@ if (process.env.DATABASE_URL) {
 } else {
     const { COOKIE_SECRET_DEV,
     } = require("../secrets.json");
-    COOKIE_SECRET = COOKIE_SECRET_DEV
+    COOKIE_SECRET = COOKIE_SECRET_DEV;
 }
 
 console.log("COOKIE_SECRET", COOKIE_SECRET);
@@ -28,7 +28,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, "..", "client/build", "public")));
+app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
 
 app.use(compression());
@@ -90,27 +90,27 @@ app.post("/api/login", async (req, res) => {
     const { email, password } = req.body;
     const loginCheck = await database.authLogin(email, password);
 
-        if (loginCheck === null) {
-            return res.json({ success: false });
-        } else {
-            const loginId = { id: loginCheck.id };
-            req.session = loginId;
-            return res.json({ success: true });
-        }
+    if (loginCheck === null) {
+        return res.json({ success: false });
+    } else {
+        const loginId = { id: loginCheck.id };
+        req.session = loginId;
+        return res.json({ success: true });
+    }
         
-    });
+});
 
 // API SERVING => app.js
 app.get("/api/get-user-data", async (req, res) => {
-    const getUser = await database.getUserById(req.session.id)
+    const getUser = await database.getUserById(req.session.id);
     return res.json(getUser);
-    });
+});
 
 
 //API SERVING app.js
 app.delete("/api/logout", (req, res) => {
     req.session = null;
-   return res.json({ success: true });
+    return res.json({ success: true });
 });
 
 //API serving app.js
@@ -123,24 +123,24 @@ app.post("/api/profile-update", async (req, res) => {
     } else if (req.body.wishThree && !req.body.wishThree.startsWith('https')) {
         return res.json({ error: "invalid link" });
     } else {
-        const updateUsers = await database.updateUsers(req.body, req.session.id)
+        const updateUsers = await database.updateUsers(req.body, req.session.id);
         if (updateUsers.id) {
             return res.json({ success: true });
         } else {
             return res.json({ success: false });
         }
     }
-})
+});
 
 app.get("/api/get-secret-group", async (req, res) => {
     const getGroupData = await database.getGroupData(req.session.id);
     return res.json(getGroupData);
-})
+});
 
 app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "..", "client/build", 'public', "index.html"));
+    res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 });
 
 app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
+    console.log(`Server listening on ${PORT}`);
 });

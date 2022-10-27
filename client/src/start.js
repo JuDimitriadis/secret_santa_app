@@ -1,89 +1,75 @@
-import "./style.css"
-import { useState } from "react";
-import {CssBaseline, Stack, Divider, Tooltip, IconButton, Modal, Fade, Box, Typography, Backdrop, Link } from '@mui/material';
-import LoginIcon from '@mui/icons-material/Login';
-import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
-import Registration from "./registration";
-import Login from "./login";
-
-export default function Start() {
-    const [openLogin, setOpenLogin] = useState(false);
-    const [openRegister, setOpenRegister] = useState(false)
-
-    const modalStyle = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 400,
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 4,
-      };
+import React from "react";
+import ReactDOM from "react-dom";
+import App from './App';
+import Welcome from './welcome';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
-    return (
-        <>
-            <CssBaseline />
-            <img src="/secret_santa.jpg" alt='Santa Claus' id="welcomeImg"/>
-            <div>
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
-      >
-        <div>
-          <Tooltip title="Login">
-            <IconButton onClick={()=>setOpenLogin(true)}>
-              <LoginIcon sx={{ color: "#c22c2d" }} />
-            </IconButton>
-          </Tooltip>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={openLogin}
-        onClose={()=>setOpenLogin(false)}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={openLogin}>
-          <Box sx={modalStyle}>
-            <Login/>
-          </Box>
-        </Fade>
-      </Modal>
-    </div>
-    <div>
-    <Tooltip title="Cadastre-se">
-            <IconButton onClick={()=>setOpenRegister(true)}>
-            <AppRegistrationIcon sx={{ color: "#c22c2d" }} />
-            </IconButton>
-          </Tooltip>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={openRegister}
-        onClose={()=> setOpenRegister(false)}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={openRegister}>
-          <Box sx={modalStyle}>
-            <Registration/>
-          </Box>
-        </Fade>
-      </Modal>
-    </div>
-      </Stack>
-    </div>
-    <footer><Typography variant="body2"><Link href="https://www.freepik.com/free-vector/hand-drawn-secret-santa-illustration_20112076.htm#query=secret%20santa&position=41&from_view=search&track=sph">Image by Freepik</Link></Typography></footer>
-        </>
-    );
-}
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#c22c2d',
+            contrastText: '#ffe2e2',
+        },
+        secondary: {
+            main: '#54944a',
+        },
+        background: {
+            paper: "#ffeed2",
+            default: "#ffeed2"
+        },
+        text: {
+            primary: '#c22c2d',
+            secondary:'#54944a'
+        },
+    },
+    typography: {
+        fontFamily: [
+            'Amatic SC',
+            'cursive',
+        ].join(','),
+
+        h2: {
+            fontWeight: 900,
+        },
+
+        h4: {
+            fontWeight: 900,
+        },
+
+        body1: {
+            fontWeight: 700,
+        },
+    }
+
+});
+
+
+fetch("/api/user")
+    .then((res) => res.json())
+    .then((result) => {
+        if (result.success === false) {
+            console.log("result.success === false");
+            ReactDOM.render(
+                <React.StrictMode>
+                    <ThemeProvider theme={theme}>
+                        <Welcome />
+                    </ThemeProvider>
+                </React.StrictMode>, document.querySelector("main")
+            );
+        } else {
+            console.log("result.success === true");
+            ReactDOM.render(
+                <React.StrictMode>
+                    <ThemeProvider theme={theme}>
+                        <App />
+                    </ThemeProvider>
+                </React.StrictMode>, document.querySelector("main")
+            );
+        }}) ;
+
+
+
+
