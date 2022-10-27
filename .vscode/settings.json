@@ -6,7 +6,10 @@
         "describedby",
         "Freepik",
         "labelledby",
+        "lookstudio",
+        "newpassword",
         "postbuild",
-        "TTFB"
+        "TTFB",
+        "webfonts"
     ]
 }
