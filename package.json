@@ -6,8 +6,9 @@
   "scripts": {
     "start": "node server/index.js",
     "start:dev": "nodemon --watch server --ignore server/uploads server/index.js",
-    "dev": "concurrently \"npm:dev:*\" --kill-others",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "npm run start --prefix client",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "Juliana Pazin Dimitriadis",
   "license": "ISC",
