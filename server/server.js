@@ -4,7 +4,7 @@ const path = require("path");
 const database = require("./db.js");
 const cookieSession = require("cookie-session");
 // const ses = require("./ses.js");
-// const multer = require("./midleware.js");
+// const multer = require("./middleware.js");
 // const s3 = require("./s3.js");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -28,7 +28,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, "..", "client", "public")));
+app.use(express.static(path.join(__dirname, "..", "client/build", "public")));
 
 
 app.use(compression());
@@ -40,8 +40,6 @@ const cookieSessionMiddleware = cookieSession({
 });
 
 app.use(cookieSessionMiddleware);
-
-app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
 app.use(compression());
 
@@ -140,7 +138,7 @@ app.get("/api/get-secret-group", async (req, res) => {
 })
 
 app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "..", "client", 'public', "index.html"));
+    res.sendFile(path.join(__dirname, "..", "client/build", 'public', "index.html"));
 });
 
 app.listen(PORT, () => {
