@@ -30,6 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
+
 app.use(compression());
 
 const cookieSessionMiddleware = cookieSession({
@@ -139,7 +140,7 @@ app.get("/api/get-secret-group", async (req, res) => {
 })
 
 app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "..", "client", "index.html"));
+    res.sendFile(path.join(__dirname, "..", "client", 'public', "index.html"));
 });
 
 app.listen(PORT, () => {

@@ -2,10 +2,11 @@
   "name": "react_express",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
     "start:dev": "nodemon --watch server --ignore server/uploads server/index.js",
+    "dev": "concurrently \"npm:dev:*\" --kill-others",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Juliana Pazin Dimitriadis",
