@@ -1,8 +1,8 @@
 # SECRET SANTA APP
 
-![Santa Claus]("/client/public/santa-claus.png")
+<img alt="Express.js" src="/client/public/santa-claus.png">
 
-This is a Secret Santa App, where you are able to create a Secret Santa Event and invite your Friends and Family to join, and make an online draw. After it, users can check online who they should gift.
+This is a Secret Santa App, where you are able to create a Secret Santa Event invite your Friends and Family to join, and make an online draw. After it, users can check online who they should gift.
 Every user can also fill up a public profile, with Name, About Me, Address, and make a Wish List with up to 3 options (link and/or description).
 
 ## Functionalities
@@ -18,26 +18,40 @@ Every user can also fill up a public profile, with Name, About Me, Address, and 
 -   Refactor:
     -   API responses
     -   Implement Data Encapsulation and Redux
--   Add 'change password' and 'Forgot Password' functionality
--   Add option to chat with your secret santa anonymously
--   Add a group administrator profile, that will be able to
+-   Add a group administrator profile, that will be able to:
     -   Create a Secret Santa Event
     -   Make a drawn
     -   Invite users to join event
+-   Add 'change password' and 'Forgot Password' functionality
+-   Add option to chat with your secret santa anonymously
+-   Add functionality to Upload Profile Picture
 
-## Tecnology
+## Technology
 
-<img alt="JavaScript" src="https://simpleicons.org/icons/javascript.svg" width=80 heigth=80> &nbsp;&nbsp;&nbsp;&nbsp;
-<img alt="Node.js" src="https://simpleicons.org/icons/nodedotjs.svg" width=80 heigth=80> &nbsp;&nbsp;&nbsp;&nbsp;
-<img alt="Express.js" src="https://simpleicons.org/icons/express.svg" width=80 heigth=80> &nbsp;&nbsp;&nbsp;&nbsp;
-<img alt="React" src="https://simpleicons.org/icons/react.svg" width=80 heigth=80> &nbsp;&nbsp;&nbsp;&nbsp;
-<img alt="Redux" src="https://simpleicons.org/icons/redux.svg" width=80 heigth=80> &nbsp;&nbsp;&nbsp;&nbsp;
-<img alt="Socket.IO" src="https://simpleicons.org/icons/socketdotio.svg" width=80 heigth=80> &nbsp;&nbsp;&nbsp;&nbsp;
-<img alt="AWS S3" src="https://simpleicons.org/icons/amazons3.svg" width=80 heigth=80> &nbsp;&nbsp;&nbsp;&nbsp;
-<img alt="PostgreSQL" src="https://simpleicons.org/icons/postgresql.svg" width=80 heigth=80> &nbsp;&nbsp;&nbsp;&nbsp;
-<img alt="Material UI" src="https://simpleicons.org/icons/mui.svg" width=80 heigth=80>
-
-<div heigth=40>Java Script &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Node.JS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-Express &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; React &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Redux &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Socket.IO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-AWS S3  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PostgreSQL &nbsp;&nbsp;&nbsp; Material UI</div>
+<a title="JavaScript" target=”_blank” href="https://g.co/kgs/w74UK9">
+    <img alt="JavaScript" src="https://simpleicons.org/icons/javascript.svg" width=80 height=80/>
+</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a title="Node.js" target=”_blank” href="https://nodejs.org/en/">
+    <img alt="Node.js" src="https://simpleicons.org/icons/nodedotjs.svg" width=80 height=80> 
+</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a title="Express.js" target=”_blank” href="https://expressjs.com/">
+    <img alt="Express.js" src="https://simpleicons.org/icons/express.svg" width=80 height=80>
+</a>  &nbsp;&nbsp;&nbsp;&nbsp;
+<a title="React" target=”_blank” href="https://reactjs.org/">
+    <img alt="React" src="https://simpleicons.org/icons/react.svg" width=80 height=80> 
+</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a title="Redux" target=”_blank” href="https://redux.js.org/">
+    <img alt="Redux" src="https://simpleicons.org/icons/redux.svg" width=80 height=80> 
+</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a title="Socket.IO" target=”_blank” href="https://socket.io/">
+    <img alt="Socket.IO" src="https://simpleicons.org/icons/socketdotio.svg" width=80 height=80> 
+</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a title="AWS S3" target=”_blank” href="https://aws.amazon.com/s3/">
+    <img alt="AWS S3" src="https://simpleicons.org/icons/amazons3.svg" width=80 height=80> 
+</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a title="PostgreSQL" target=”_blank” href="https://www.postgresql.org/">
+    <img alt="PostgreSQL" src="https://simpleicons.org/icons/postgresql.svg" width=80 height=80> 
+</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a title="Material UI" target=”_blank” href="https://mui.com/">
+    <img alt="Material UI" src="https://simpleicons.org/icons/mui.svg" width=80 height=80>
+</a>
