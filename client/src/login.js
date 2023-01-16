@@ -13,9 +13,9 @@ export default class Registration extends Component {
     }
 
     handleChange(e) {
-        this.setState({data:{
+        this.setState({
             [e.target.name]: e.target.value,
-        }}
+        }
         ,
         () => console.log(this.state)
         );
@@ -23,6 +23,7 @@ export default class Registration extends Component {
 
     async handleSubmit(evt) {
         evt.preventDefault();
+        
         this.setState({
             alert: false
         }
@@ -45,7 +46,7 @@ export default class Registration extends Component {
 
             if (response.success === false) {
                 this.setState({
-                    error: "Ops, something went wrong! E-mail and/or password incorrect",
+                    error: "Ops! E-mail ou senha incorretos",
                     alert:"error"
                 });
             } else {
@@ -57,7 +58,7 @@ export default class Registration extends Component {
             console.log("missing field");
 
             this.setState({
-                error: "Please fill out all required fields before submitting",
+                error: "Por favor, preencha todos os campos",
                 alert:"warning"
             }
               

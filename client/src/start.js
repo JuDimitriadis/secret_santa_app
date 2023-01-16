@@ -5,8 +5,6 @@ import Welcome from './welcome';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-
 const theme = createTheme({
     palette: {
         primary: {
@@ -51,7 +49,6 @@ fetch("/api/user")
     .then((res) => res.json())
     .then((result) => {
         if (result.success === false) {
-            console.log("result.success === false");
             ReactDOM.render(
                 <React.StrictMode>
                     <ThemeProvider theme={theme}>
@@ -60,7 +57,6 @@ fetch("/api/user")
                 </React.StrictMode>, document.querySelector("main")
             );
         } else {
-            console.log("result.success === true");
             ReactDOM.render(
                 <React.StrictMode>
                     <ThemeProvider theme={theme}>
